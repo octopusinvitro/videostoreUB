@@ -30,7 +30,7 @@ public class VideoStoreTest {
     public void singleNewReleaseStatement() {
         statement.addRental(new Rental(newRelease1, 3));
         statement.generate();
-        assertEquals(9.0, statement.getAmount(), delta);
+        assertEquals(9.0, statement.getTotalAmount(), delta);
         assertEquals(2, statement.getFrequentRenterPoints());
 
     }
@@ -40,7 +40,7 @@ public class VideoStoreTest {
         statement.addRental(new Rental(newRelease1, 3));
         statement.addRental(new Rental(newRelease2, 3));
         statement.generate();
-        assertEquals(18.0, statement.getAmount(), delta);
+        assertEquals(18.0, statement.getTotalAmount(), delta);
         assertEquals(4, statement.getFrequentRenterPoints());
     }
 
@@ -48,7 +48,7 @@ public class VideoStoreTest {
     public void singleChildrensStatement() {
         statement.addRental(new Rental(childrens, 3));
         statement.generate();
-        assertEquals(1.5, statement.getAmount(), delta);
+        assertEquals(1.5, statement.getTotalAmount(), delta);
         assertEquals(1, statement.getFrequentRenterPoints());
     }
 
@@ -58,7 +58,7 @@ public class VideoStoreTest {
         statement.addRental(new Rental(regular2, 2));
         statement.addRental(new Rental(regular3, 3));
         statement.generate();
-        assertEquals(7.5, statement.getAmount(), delta);
+        assertEquals(7.5, statement.getTotalAmount(), delta);
         assertEquals(3, statement.getFrequentRenterPoints());
     }
 
@@ -69,9 +69,9 @@ public class VideoStoreTest {
         statement.addRental(new Rental(regular3, 3));
 
         assertEquals("Rental Record for Fred\n" +
-                "\tRegular 1\t2.0\n" +
-                "\tRegular 2\t2.0\n" +
-                "\tRegular 3\t3.5\n" +
-                "You owed 7.5\nYou earned 3 frequent renter points\n", statement.generate());
+                "\tRegular 1\t2,0\n" +
+                "\tRegular 2\t2,0\n" +
+                "\tRegular 3\t3,5\n" +
+                "You owed 7,5\nYou earned 3 frequent renter points\n", statement.generate());
     }
 }

@@ -16,20 +16,21 @@ public class Statement {
         rentals.addElement(rental);
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public int getFrequentRenterPoints() {
+        return frequentRenterPoints;
     }
 
     public String generate() {
         totalAmount = 0;
         frequentRenterPoints = 0;
+
         String statementText = header();
         statementText += rentalCalculation();
-
-        statementText += "You owed " + String.valueOf(totalAmount) + "\n";
-        statementText += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points\n";
-
-
+        statementText += footer();
         return statementText;
     }
 
@@ -68,19 +69,14 @@ public class Statement {
                     && each.getDaysRented() > 1)
                 frequentRenterPoints++;
 
-            statementText += "\t" + each.getMovie().getTitle() + "\t"
-                    + String.valueOf(thisAmount) + "\n";
+            statementText += String.format("\t%s\t%.1f\n", each.getMovie().getTitle(), thisAmount);
             totalAmount += thisAmount;
 
         }
         return statementText;
     }
 
-    public double getAmount() {
-        return totalAmount;
-    }
-
-    public int getFrequentRenterPoints() {
-        return frequentRenterPoints;
+    private String footer() {
+        return String.format("You owed %.1f\nYou earned %d frequent renter points\n", totalAmount, frequentRenterPoints);
     }
 }
