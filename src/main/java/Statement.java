@@ -40,20 +40,16 @@ public class Statement {
 
     private String rentalCalculation() {
         String statementText = "";
-        Enumeration rentals = this.rentals.elements();
+        Enumeration rentals  = this.rentals.elements();
 
         while (rentals.hasMoreElements()) {
-            Rental each = (Rental) rentals.nextElement();
-            double thisAmount = rentalLine(each);
+            Rental rental       = (Rental) rentals.nextElement();
+            double rentalAmount = rentalLine(rental);
 
-            frequentRenterPoints++;
+            frequentRenterPoints += calculateFrequentRenterPoints(rental);
 
-            if (each.getMovie().getPriceCode() == Movie.NEW_RELEASE
-                    && each.getDaysRented() > 1)
-                frequentRenterPoints++;
-
-            statementText += String.format("\t%s\t%.1f\n", each.getMovie().getTitle(), thisAmount);
-            totalAmount += thisAmount;
+            statementText += String.format("\t%s\t%.1f\n", rental.getMovie().getTitle(), rentalAmount);
+            totalAmount += rentalAmount;
 
         }
         return statementText;
@@ -61,6 +57,16 @@ public class Statement {
 
     private double rentalLine(Rental rental) {
         return rental.getRentalAmount();
+    }
+
+    private int calculateFrequentRenterPoints(Rental rental) {
+        if (hasBonusPoints(rental))
+            return 2;
+        return 1;
+    }
+
+    private boolean hasBonusPoints(Rental rental) {
+        return rental.getMovie().getPriceCode() == Movie.NEW_RELEASE && rental.getDaysRented() > 1;
     }
 
     private String footer() {
