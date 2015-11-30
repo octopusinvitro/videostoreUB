@@ -44,4 +44,14 @@ public class Movie {
 
         return rentalAmount;
     }
+
+    public int getFrequentRenterPoints(int daysRented) {
+        if (hasBonusPoints(daysRented))
+            return 2;
+        return 1;
+    }
+
+    private boolean hasBonusPoints(int daysRented) {
+        return getPriceCode() == Movie.NEW_RELEASE && daysRented > 1;
+    }
 }
