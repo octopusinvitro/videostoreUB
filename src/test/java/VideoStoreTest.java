@@ -18,12 +18,12 @@ public class VideoStoreTest {
     public void setUp() {
         statement   = new Statement("Fred");
         delta       = 0.01;
-        newRelease1 = new NewReleaseMovie("New Release 1", Movie.NEW_RELEASE);
-        newRelease2 = new NewReleaseMovie("New Release 2", Movie.NEW_RELEASE);
-        childrens   = new ChildrensMovie("Childrens", Movie.CHILDRENS);
-        regular1    = new RegularMovie("Regular 1", Movie.REGULAR);
-        regular2    = new RegularMovie("Regular 2", Movie.REGULAR);
-        regular3    = new RegularMovie("Regular 3", Movie.REGULAR);
+        newRelease1 = new NewReleaseMovie("New Release 1");
+        newRelease2 = new NewReleaseMovie("New Release 2");
+        childrens   = new ChildrensMovie("Childrens");
+        regular1    = new RegularMovie("Regular 1");
+        regular2    = new RegularMovie("Regular 2");
+        regular3    = new RegularMovie("Regular 3");
     }
 
     @Test
