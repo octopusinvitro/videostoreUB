@@ -2,13 +2,13 @@ import java.util.Vector;
 import java.util.Enumeration;
 
 public class Statement {
-    private String name;
+    private String customerName;
     private Vector rentals;
     private double totalAmount;
     private int frequentRenterPoints;
 
     public Statement(String name) {
-        this.name = name;
+        this.customerName = name;
         rentals   = new Vector();
     }
 
@@ -16,14 +16,14 @@ public class Statement {
         rentals.addElement(rental);
     }
 
-    public String getName() {
-        return name;
+    public String getCustomerName() {
+        return customerName;
     }
 
     public String generate() {
         totalAmount = 0;
         frequentRenterPoints = 0;
-        String statementText = "Rental Record for " + getName() + "\n";
+        String statementText = header();
         statementText += rentalCalculation();
 
         statementText += "You owed " + String.valueOf(totalAmount) + "\n";
@@ -31,6 +31,10 @@ public class Statement {
 
 
         return statementText;
+    }
+
+    private String header() {
+        return String.format("Rental Record for %s\n", customerName);
     }
 
     private String rentalCalculation() {
