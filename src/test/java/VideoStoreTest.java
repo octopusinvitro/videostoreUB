@@ -16,7 +16,7 @@ public class VideoStoreTest {
 
     @Before
     public void setUp() {
-        statement = new Statement("Fred");
+        statement   = new Statement("Fred");
         delta       = 0.01;
         newRelease1 = new NewReleaseMovie("New Release 1", Movie.NEW_RELEASE);
         newRelease2 = new NewReleaseMovie("New Release 2", Movie.NEW_RELEASE);
