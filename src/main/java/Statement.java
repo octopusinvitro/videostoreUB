@@ -23,8 +23,19 @@ public class Statement {
     public String generate() {
         totalAmount = 0;
         frequentRenterPoints = 0;
+        String statementText = "Rental Record for " + getName() + "\n";
+        statementText += rentalCalculation();
+
+        statementText += "You owed " + String.valueOf(totalAmount) + "\n";
+        statementText += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points\n";
+
+
+        return statementText;
+    }
+
+    private String rentalCalculation() {
+        String statementText = "";
         Enumeration rentals = this.rentals.elements();
-        String result = "Rental Record for " + getName() + "\n";
 
         while (rentals.hasMoreElements()) {
             double thisAmount = 0;
@@ -53,17 +64,12 @@ public class Statement {
                     && each.getDaysRented() > 1)
                 frequentRenterPoints++;
 
-            result += "\t" + each.getMovie().getTitle() + "\t"
+            statementText += "\t" + each.getMovie().getTitle() + "\t"
                     + String.valueOf(thisAmount) + "\n";
             totalAmount += thisAmount;
 
         }
-
-        result += "You owed " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points\n";
-
-
-        return result;
+        return statementText;
     }
 
     public double getAmount() {
