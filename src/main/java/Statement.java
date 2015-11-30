@@ -44,7 +44,7 @@ public class Statement {
         while (rentals.hasMoreElements()) {
             Rental rental         = (Rental) rentals.nextElement();
             frequentRenterPoints += calculateFrequentRenterPoints(rental);
-            double rentalAmount   = rentalLine(rental);
+            double rentalAmount   = calculateRentalAmount(rental);
             statementText        += formatRentalLine(rental, rentalAmount);
             totalAmount          += rentalAmount;
         }
@@ -52,7 +52,7 @@ public class Statement {
         return statementText;
     }
 
-    private double rentalLine(Rental rental) {
+    private double calculateRentalAmount(Rental rental) {
         return rental.getRentalAmount();
     }
 
