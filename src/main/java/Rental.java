@@ -40,4 +40,14 @@ public class Rental {
     public String getTitle() {
         return movie.getTitle();
     }
+
+    public int getFrequentRenterPoints() {
+        if (hasBonusPoints())
+            return 2;
+        return 1;
+    }
+
+    private boolean hasBonusPoints() {
+        return movie.getPriceCode() == Movie.NEW_RELEASE && daysRented > 1;
+    }
 }

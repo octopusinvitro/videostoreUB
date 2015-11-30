@@ -57,13 +57,7 @@ public class Statement {
     }
 
     private int calculateFrequentRenterPoints(Rental rental) {
-        if (hasBonusPoints(rental))
-            return 2;
-        return 1;
-    }
-
-    private boolean hasBonusPoints(Rental rental) {
-        return rental.getMovie().getPriceCode() == Movie.NEW_RELEASE && rental.getDaysRented() > 1;
+        return rental.getFrequentRenterPoints();
     }
 
     private String formatRentalLine(Rental rental, double rentalAmount) {
