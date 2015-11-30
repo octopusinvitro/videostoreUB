@@ -69,9 +69,9 @@ public class VideoStoreTest {
         statement.addRental(new Rental(regular3, 3));
 
         assertEquals("Rental Record for Fred\n" +
-                "\tRegular 1\t2,0\n" +
-                "\tRegular 2\t2,0\n" +
-                "\tRegular 3\t3,5\n" +
-                "You owed 7,5\nYou earned 3 frequent renter points\n", statement.generate());
+                "\tRegular 1\t2.0\n" +
+                "\tRegular 2\t2.0\n" +
+                "\tRegular 3\t3.5\n" +
+                "You owed 7.5\nYou earned 3 frequent renter points\n", statement.generate());
     }
 }
