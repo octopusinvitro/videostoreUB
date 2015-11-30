@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 
 public class VideoStoreTest {
 
-    private Customer customer;
+    private Statement statement;
     private double delta;
     private Movie newRelease1;
     private Movie newRelease2;
@@ -16,7 +16,7 @@ public class VideoStoreTest {
 
     @Before
     public void setUp() {
-        customer    = new Customer("Fred");
+        statement = new Statement("Fred");
         delta       = 0.01;
         newRelease1 = new Movie("New Release 1", Movie.NEW_RELEASE);
         newRelease2 = new Movie("New Release 2", Movie.NEW_RELEASE);
@@ -28,50 +28,50 @@ public class VideoStoreTest {
 
     @Test
     public void singleNewReleaseStatement() {
-        customer.addRental(new Rental(newRelease1, 3));
-        customer.statement();
-        assertEquals(9.0, customer.getAmount(), delta);
-        assertEquals(2, customer.getFrequentRenterPoints());
+        statement.addRental(new Rental(newRelease1, 3));
+        statement.generate();
+        assertEquals(9.0, statement.getAmount(), delta);
+        assertEquals(2, statement.getFrequentRenterPoints());
 
     }
 
     @Test
     public void dualNewReleaseStatement() {
-        customer.addRental(new Rental(newRelease1, 3));
-        customer.addRental(new Rental(newRelease2, 3));
-        customer.statement();
-        assertEquals(18.0, customer.getAmount(), delta);
-        assertEquals(4, customer.getFrequentRenterPoints());
+        statement.addRental(new Rental(newRelease1, 3));
+        statement.addRental(new Rental(newRelease2, 3));
+        statement.generate();
+        assertEquals(18.0, statement.getAmount(), delta);
+        assertEquals(4, statement.getFrequentRenterPoints());
     }
 
     @Test
     public void singleChildrensStatement() {
-        customer.addRental(new Rental(childrens, 3));
-        customer.statement();
-        assertEquals(1.5, customer.getAmount(), delta);
-        assertEquals(1, customer.getFrequentRenterPoints());
+        statement.addRental(new Rental(childrens, 3));
+        statement.generate();
+        assertEquals(1.5, statement.getAmount(), delta);
+        assertEquals(1, statement.getFrequentRenterPoints());
     }
 
     @Test
     public void multipleRegularStatement() {
-        customer.addRental(new Rental(regular1, 1));
-        customer.addRental(new Rental(regular2, 2));
-        customer.addRental(new Rental(regular3, 3));
-        customer.statement();
-        assertEquals(7.5, customer.getAmount(), delta);
-        assertEquals(3, customer.getFrequentRenterPoints());
+        statement.addRental(new Rental(regular1, 1));
+        statement.addRental(new Rental(regular2, 2));
+        statement.addRental(new Rental(regular3, 3));
+        statement.generate();
+        assertEquals(7.5, statement.getAmount(), delta);
+        assertEquals(3, statement.getFrequentRenterPoints());
     }
 
     @Test
     public void multipleRegularStatementFormat() {
-        customer.addRental(new Rental(regular1, 1));
-        customer.addRental(new Rental(regular2, 2));
-        customer.addRental(new Rental(regular3, 3));
+        statement.addRental(new Rental(regular1, 1));
+        statement.addRental(new Rental(regular2, 2));
+        statement.addRental(new Rental(regular3, 3));
 
         assertEquals("Rental Record for Fred\n" +
                 "\tRegular 1\t2.0\n" +
                 "\tRegular 2\t2.0\n" +
                 "\tRegular 3\t3.5\n" +
-                "You owed 7.5\nYou earned 3 frequent renter points\n", customer.statement());
+                "You owed 7.5\nYou earned 3 frequent renter points\n", statement.generate());
     }
 }

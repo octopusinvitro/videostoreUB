@@ -1,14 +1,15 @@
 import java.util.Vector;
 import java.util.Enumeration;
 
-public class Customer {
+public class Statement {
     private String name;
-    private Vector rentals = new Vector();
+    private Vector rentals;
     private double totalAmount;
     private int frequentRenterPoints;
 
-    public Customer(String name) {
+    public Statement(String name) {
         this.name = name;
+        rentals   = new Vector();
     }
 
     public void addRental(Rental rental) {
@@ -19,7 +20,7 @@ public class Customer {
         return name;
     }
 
-    public String statement() {
+    public String generate() {
         totalAmount = 0;
         frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
