@@ -18,8 +18,8 @@ public class VideoStoreTest {
     public void setUp() {
         statement = new Statement("Fred");
         delta       = 0.01;
-        newRelease1 = new Movie("New Release 1", Movie.NEW_RELEASE);
-        newRelease2 = new Movie("New Release 2", Movie.NEW_RELEASE);
+        newRelease1 = new NewReleaseMovie("New Release 1", Movie.NEW_RELEASE);
+        newRelease2 = new NewReleaseMovie("New Release 2", Movie.NEW_RELEASE);
         childrens   = new Movie("Childrens", Movie.CHILDRENS);
         regular1    = new Movie("Regular 1", Movie.REGULAR);
         regular2    = new Movie("Regular 2", Movie.REGULAR);
