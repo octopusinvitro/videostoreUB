@@ -20,7 +20,7 @@ public class VideoStoreTest {
         delta       = 0.01;
         newRelease1 = new NewReleaseMovie("New Release 1", Movie.NEW_RELEASE);
         newRelease2 = new NewReleaseMovie("New Release 2", Movie.NEW_RELEASE);
-        childrens   = new Movie("Childrens", Movie.CHILDRENS);
+        childrens   = new ChildrensMovie("Childrens", Movie.CHILDRENS);
         regular1    = new Movie("Regular 1", Movie.REGULAR);
         regular2    = new Movie("Regular 2", Movie.REGULAR);
         regular3    = new Movie("Regular 3", Movie.REGULAR);
