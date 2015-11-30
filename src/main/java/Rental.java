@@ -36,4 +36,8 @@ public class Rental {
 
         return rentalAmount;
     }
+
+    public String getTitle() {
+        return movie.getTitle();
+    }
 }
