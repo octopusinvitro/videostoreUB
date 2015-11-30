@@ -2,6 +2,8 @@ import java.util.Vector;
 import java.util.Enumeration;
 
 public class Customer {
+    private String name;
+    private Vector rentals = new Vector();
     private double totalAmount;
     private int frequentRenterPoints;
 
@@ -62,10 +64,6 @@ public class Customer {
 
         return result;
     }
-
-
-    private String name;
-    private Vector rentals = new Vector();
 
     public double getAmount() {
         return totalAmount;

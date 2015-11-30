@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 
 public class VideoStoreTest {
 
+    private Customer customer;
     private double delta;
     private Movie newRelease1;
     private Movie newRelease2;
@@ -73,6 +74,4 @@ public class VideoStoreTest {
                 "\tRegular 3\t3.5\n" +
                 "You owed 7.5\nYou earned 3 frequent renter points\n", customer.statement());
     }
-
-    private Customer customer;
 }
